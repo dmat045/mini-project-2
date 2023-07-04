@@ -11,7 +11,7 @@ interface Game {
   genre: string;
   thumbnail: string;
   short_description: string;
-  // Add other properties of the game object here
+
 }
 
 interface HomeProps {
@@ -31,7 +31,7 @@ const Home: React.FC<HomeProps> = ({ filteredGames, error }) => {
   ) || [];
 
   if (error) {
-    // Handle the error state
+
     return <div>Error: {error}</div>;
   }
 
@@ -67,7 +67,7 @@ export async function getServerSideProps() {
     }
 
     const data = await res.json();
-    console.log('API Response:', data); // Log the response data
+    console.log('API Response:', data); 
 
     return {
       props: {
