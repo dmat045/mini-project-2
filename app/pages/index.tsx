@@ -12,7 +12,6 @@ interface Game {
   genre: string;
   thumbnail: string;
   short_description: string;
-
 }
 
 interface HomeProps {
@@ -77,14 +76,10 @@ export async function getServerSideProps() {
     try {
       console.log('getServerSideProps is called');
   
-      const API_KEY = 'YOUR_API_KEY';
+      const API_KEY = '2c823b64521548229a5d0dfa058e8c1c';
       const API_URL = 'https://api.rawg.io/api';
   
-      const searchQuery = '';
-      const page = 1;
-      const pageSize = 10;
-  
-      const url = `${API_URL}/games?key=${API_KEY}&search=${searchQuery}&page=${page}&page_size=${pageSize}`;
+      const url = `${API_URL}/platforms?key=${API_KEY}`;
   
       await new Promise((resolve) => setTimeout(resolve, 1000));
   
@@ -113,5 +108,4 @@ export async function getServerSideProps() {
     }
   }
   
-
 export default Home;
