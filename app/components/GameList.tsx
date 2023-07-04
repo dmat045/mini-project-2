@@ -11,9 +11,19 @@ interface Game {
 
 interface GameListProps {
   filteredGames: Game[] | null;
+  page: number;
+  pageSize: number;
+  onPageChange: (page: number) => void;
+  onPageSizeChange: (pageSize: number) => void;
 }
 
-const GameList: React.FC<GameListProps> = ({ filteredGames }) => {
+const GameList: React.FC<GameListProps> = ({
+  filteredGames,
+  page,
+  pageSize,
+  onPageChange,
+  onPageSizeChange
+}) => {
   return (
     <>
       {filteredGames?.map((game) => {
@@ -29,6 +39,22 @@ const GameList: React.FC<GameListProps> = ({ filteredGames }) => {
           </div>
         );
       })}
+
+      {/* Pagination Controls */}
+      <div>
+        <button onClick={() => onPageChange(page - 1)}>Previous</button>
+        <span>Page: {page}</span>
+        <button onClick={() => onPageChange(page + 1)}>Next</button>
+        <select
+          value={pageSize}
+          onChange={(e) => onPageSizeChange(Number(e.target.value))}
+          aria-label="Results per page"
+        >
+          <option value="5">5 per page</option>
+          <option value="10">10 per page</option>
+          <option value="20">20 per page</option>
+        </select>
+      </div>
     </>
   );
 };

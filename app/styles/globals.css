@@ -35,9 +35,12 @@ body {
   font-size: 30px;
   font-weight: bold;
 }
+
 .header_box > a {
   display: inline-block;
 }
+
+
 .header_box p {
   color: #16ee1e;
 }
